@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/css/style.css">
+    <title>Go Movie Streaming</title>
+</head>
+
+<body>
+
+    <section class="title">
+        <h1>Go Movie Streaming</h1>
+    </section>
+
+    <section class="container">
+        <h2>Introducción</h2>
+        <p>Go Movie Streaming es una aplicación de streaming que unifica todo los contenidos audiovisuales en una sola APP. Permitiendo a los usuarios ver todos los contenidos en una sola APP sin la necesidad de descargar varias aplicaciones para disfrutar de los mejores contenidos de forma legal.</p>
+    </section>
+
+    <section class="container">
+        <h2>Objetivo</h2>
+        <p>Es poder tener una base en la que se pueda integrar la mayor cantidad de peliculas y series dentro de una
+            sola app. Permitiendo así, consentrar el medio audiovisual de todas las plataformas de streaming en una solo
+            aplicación.</p>
+    </section>
+
+    <section class="container">
+        <h2>Situación problemática</h2>
+        <p>Actualmente no hay una aplicación legal que brinde la disponibilidad de todos los contenidos audivisuales del mercado. Por lo que los usuarios deben descargar varias aplicaciones de streaming que ofrecen distintos contedidos.</p>
+    </section>
+
+    <section class="container">
+        <h2>Modelo de negocio</h2>
+        <p>La intensión de la propuesta es realizar la creación de una base de datos para una plataforma de streaming de
+            películas legal. Que permita recaudar datos de diferenctes clientes según sus necesidades poder asi, mejorar el servicio en una sola app de streaming.</p>
+    </section>
+
+    <section class="container diagram">
+        <h2>Diagrama de entidad relación</h2>
+        <div>
+            <a href="https://drive.google.com/file/d/16rE0slZ52TN9CX-sjaH-v3tN0tsLS19F/view?usp=sharing"
+                target="_blank">
+                <img class="img-diagram" src="asset/images/diagrama-entidad-relacion-streaming-de-peliculas.svg" alt="">
+            </a>
+        </div>
+    </section>
+
+    <section class="container table-list">
+        <h2>Listado de tablas con descripción de estructura</h2>
+        <h4>(columna, descripción, tipo de datos, tipo de clave)</h4>
+        <div>
+            <a href="https://docs.google.com/spreadsheets/d/1lKco6SCUG9RAxh2DJNoWn8p9QbiRPyHySRws7j2Fcno/edit?gid=0#gid=0"
+                target="_blank">
+                <p>Tablas de goMovieStreaming</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="container table-list database-script">
+        <h2>Scripts de creación de cada objeto de la base de datos e inserción de datos</h2>
+        <a href="https://github.com/garcia-leandro-lucas/movie-streaming-database/blob/main/sql/goMovieStreaming_create.sql"
+            target="_blank">
+            <p>
+                1 - Creación de Tablas
+            </p>
+        </a>
+        <a href="https://github.com/garcia-leandro-lucas/movie-streaming-database/blob/main/sql/goMovieStreaming_population.sql"
+            target="_blank">
+            <p>
+                2 - Población de Tablas
+            </p>
+        </a>
+        <a href="https://github.com/garcia-leandro-lucas/movie-streaming-database/blob/main/sql/views/goMovieStreaming_views.sql"
+            target="_blank">
+            <p>
+                3 - Vistas
+            </p>
+        </a>
+        <a href="https://github.com/garcia-leandro-lucas/movie-streaming-database/blob/main/sql/functions/goMovieStreaming_functions.sql"
+            target="_blank">
+            <p>
+                4 - Funciones
+            </p>
+        </a>
+        <a href="https://github.com/garcia-leandro-lucas/movie-streaming-database/blob/main/sql/triggers/goMovieStreaming_triggers.sql"
+            target="_blank">
+            <p>
+                5 - Triggers
+            </p>
+        </a>
+        <a href="https://github.com/garcia-leandro-lucas/movie-streaming-database/blob/main/sql/stored_procedures/goMovieStreaming_stored_procedures.sql"
+            target="_blank">
+            <p>
+                6 - Stores Procedures
+            </p>
+        </a>
+    </section>
+
+    <section class="container information-graf">
+        <h2>Informes generados en base a la información de la base</h2>
+        <p>En el siguiente gráfico se puede observar las cantidades de usuarios que contrataron los diferentes tipos de
+            subscripción. Esto mismo ve puede ver replejado en el gráfico.</p>
+        <br />
+        <div class="content-code">
+            <h4>Sentencia SQL:</h4>
+            <code>
+                <div>
+                    <span>
+                        <strong>SELECT</strong> C.id_subscription, S.type_of_plan_description, <strong>COUNT(</strong>C.id_subscription<strong>)</strong> <strong>AS</strong> subscribed_amount
+                        <strong>FROM</strong> customer C
+                        <strong>INNER JOIN</strong> subscription S
+                        <strong>ON</strong> C.id_subscription = S.id_subscription
+                        <strong>GROUP BY</strong> id_subscription;
+                    </span>
+                </div>
+            </code>
+        </div>
+        <br />
+        <div class="content-date">
+            <div class="content-table table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>id_subscription</td>
+                            <td>type_of_plan_description</td>
+                            <td>subscribed amount</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Free daily</td>
+                            <td>3</td>
+                        </tr>
+                        <tr class="separate">
+                            <td>2</td>
+                            <td>Free monthy</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Free annual</td>
+                            <td>2</td>
+                        </tr>
+                        <tr class="separate">
+                            <td>4</td>
+                            <td>Essential daily</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Essential monthy</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="separate">
+                            <td>7</td>
+                            <td>Standard daily</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Standard annual</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="separate">
+                            <td>10</td>
+                            <td>Premium daily</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Premium monthy</td>
+                            <td>2</td>
+                        </tr>
+                        <tr class="separate">
+                            <td>12</td>
+                            <td>Premium annual</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content-graf">
+                <img src="/asset/images/chart.svg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="container tools">
+        <h2>Herramientas y tecnologías usadas</h2>
+        <div class="content-tools">
+            <img src="asset/images/mysql.svg" alt="">
+            <img src="asset/images/postman.svg" alt="">
+            <img src="asset/images/git.svg" alt="">
+            <img src="asset/images/gitHub.svg" alt="">
+            <img src="asset/images/google-drive.svg" alt="">
+            <img src="asset/images/visual-studio-code.svg" alt="">
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Futuras líneas</h2>
+        <ul>
+            <li>Contar con la incorporación de una tabla con el registro de todas las transacciones de compra de subscripción.</li>
+            <li></li>
+        </ul>
+    </section>
+
+</body>
+
+</html>
